@@ -4,6 +4,13 @@ library(gplots)
 
 ### MASSI espresso function
 massi.espresso <- function(exprs, y.probes, threshold=3){
+  
+  #Check that the input data is in the correct data.frame class
+  class.exprs <- class(exprs)
+  class.y.probes <- class(y.probes)
+  if(class.exprs != "data.frame") stop("input data must be in data.frame class")
+  if(class.y.probes != "data.frame") stop("input data must be in data.frame class")
+  
   exprs$ID <- rownames(exprs) # set probe as ID
   y.probes$ID <- row.names(y.probes) # set probe as ID
   y.values <- as.data.frame(merge(exprs, y.probes, by="ID")) # extract matched probes from expression matrix using ID

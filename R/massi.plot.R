@@ -25,7 +25,7 @@ massi.plot <- function(y.values=y.values, y.subset.values=y.subset.values,
   # create the plot
   barCenters <- barplot(probe.means, xpd=F, names.arg=massi.output$ID, cex.names=0.7,
                         ylab="Chr.Y probe expression (Mean +/- SD)",
-                        xlab="Samples",
+                        xlab="",
                         col=c("red", "green")[as.factor(sample.sex)],
                         las=2, ylim=c(plot.bottom,plot.top))
   segments(barCenters, probe.means-probe.sd, # add the sd bars
@@ -37,26 +37,7 @@ massi.plot <- function(y.values=y.values, y.subset.values=y.subset.values,
   y.kmedoids <- get("y.kmedoids")
   clusplot(t(y.subset.values), y.kmedoids$clustering, color=TRUE, shade=FALSE, main="",cex.txt=0.5,
            labels=2, lines=0)
-  
-  ## generate histogram of z-scores
-  z.male <- subset(massi.output, subset=massi.output$kmedoids.sex=="male") # subset male samples
-  m.hist <- hist(z.male$rowMeans.z.score., breaks=5, plot=T, ) # histogram of male z-scores
-  
-  z.female <- subset(massi.output, subset=massi.output$kmedoids.sex=="female") # subset female samples
-  f.hist <- hist(z.female$rowMeans.z.score., breaks=5, probability=T) # histogram of female z-scores
-  
-  plot( f.hist, col=rgb(1,0,0,1/2), xlim=c(-2,2))
-  plot( m.hist, col=rgb(0,1,0,1/2), xlim=c(-2,2), add=T)
-  lines(density(z.male$rowMeans.z.score.), col="blue")
-  lines(density(z.female$rowMeans.z.score.), col="red")
-  
-  #lines(density(massi.output$rowMeans.z.score.), col="red", )
-  
-           # add a density estimate with defaults
-  z.male <- subset(x=massi.output, subset=massi.output$kmedoids.sex=="male")
-  lines(density(z.male$rowMeans.z.score.))
-  
-  
+
   
   dev.off()
 }

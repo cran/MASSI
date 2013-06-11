@@ -1,7 +1,7 @@
 Package: MASSI
 Type: Package
 Title: MicroArray Sample Sex Identifier
-Version: 1.0
+Version: 1.1
 Date: 2013-06-11
 Author: Sam Buckberry
 Maintainer: Sam Buckberry <sam.buckberry@adelaide.edu.au>
@@ -11,7 +11,7 @@ Collate: 'massi.check.R' 'massi.cluster.R' 'massi.espresso.R'
         'massi.plot.R' 'massi.y.R'
 LazyData: true
 Depends: fpc, gplots
-Packaged: 2013-08-19 23:51:31 UTC; sambuckberry
+Packaged: 2013-09-30 10:02:38 UTC; sambuckberry
 NeedsCompilation: no
 Repository: CRAN
-Date/Publication: 2013-08-20 07:01:03
+Date/Publication: 2013-09-30 12:46:13
